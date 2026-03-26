@@ -1,11 +1,10 @@
 import { useState } from "react";
 import utoLogo from "@/pages/20260315_1944_Image Generation_remix_01kkrz7w0kfq78bqz2csx3r367.png";
-import pdf from "@/pages/1-2026-2-004234422-1-1.pdf"
 
 const certificateData = {
-  fullName: "КЕНЕБАЕВ РАСУЛ ДАНИЯРОВИЧ",
-  iin: "090312553541",
-  ikt: "004300689",
+  fullName: "МУХАМБЕТАЛИНА КАМИЛА МУХТАРОВНА",
+  iin: "090403653077",
+  ikt: "004303074",
   testType: "ЕНТ",
   testYear: "2026 (Март)",
   language: "русский",
@@ -13,11 +12,11 @@ const certificateData = {
 };
 
 const subjects = [
-  { id: 1, name: "История Казахстана", score: 14 },
-  { id: 2, name: "Грамотность чтения", score: 8 },
-  { id: 3, name: "Математическая грамотность", score: 10 },
-  { id: 4, name: "Всемирная история", score: 30 },
-  { id: 5, name: "Основы права", score: 46 },
+  { id: 1, name: "История Казахстана", score: 10 },
+  { id: 2, name: "Грамотность чтения", score: 6 },
+  { id: 3, name: "Математическая грамотность", score: 8 },
+  { id: 4, name: "Всемирная история", score: 24 },
+  { id: 5, name: "Основы права", score: 42 },
 ];
 
 const totalScore = subjects.reduce((sum, s) => sum + s.score, 0);
