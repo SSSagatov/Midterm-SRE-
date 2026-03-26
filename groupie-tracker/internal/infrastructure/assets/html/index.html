@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="icon" href="/static/images/favicon.ico" />
+</head>
+<body>
+    <div class="container">
+        <div class="grid">
+            {{ range . }}
+            <a href="/artist?id={{.ID}}" class="card-link">
+                <div class="card">
+                    <div class="card-image-container">
+                        <img src="{{.ImageLink}}" alt="The Neon Lights" class="card-image"/>
+                    </div>
+                
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="card-title">{{.Name}}</h3>
+                            <div class="members-list">
+                                Members: 
+                                {{ range $index, $member := .Members }}
+                                    {{ if $index }}, {{ end }}{{ $member }}
+                                {{ end }}
+                            </div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="info-row">
+                                <span class="info-label">Founded:</span>
+                                <span>{{.CreationDateYear}}</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="info-label">First Album:</span>
+                                <span>{{.FirstAlbumDate}}</span>
+                            </div>
+                            <div class="events-section">
+                                <!-- Events -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+            {{ end }}
+        </div>
+    </div>
+</body>
+</html>
