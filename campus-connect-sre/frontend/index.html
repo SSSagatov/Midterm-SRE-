@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Connect</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Campus Connect</h1>
+      <p>Student discussion board with Go + PostgreSQL + observability stack.</p>
+      <div class="hero-actions">
+        <a href="#create-post" class="btn btn-primary">Create post</a>
+        <button id="refreshBtn" class="btn btn-secondary">Refresh feed</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main-grid">
+    <section class="panel status-panel">
+      <h2>System status</h2>
+      <div class="status-row">
+        <span>Frontend</span>
+        <strong class="ok">Online</strong>
+      </div>
+      <div class="status-row">
+        <span>Backend health</span>
+        <strong id="healthBadge">Checking...</strong>
+      </div>
+      <div class="status-links">
+        <a href="http://localhost:8080/healthz" target="_blank" rel="noreferrer">Health</a>
+        <a href="http://localhost:8080/metrics" target="_blank" rel="noreferrer">Metrics</a>
+        <a href="http://localhost:9090" target="_blank" rel="noreferrer">Prometheus</a>
+        <a href="http://localhost:3000" target="_blank" rel="noreferrer">Grafana</a>
+      </div>
+    </section>
+
+    <section class="panel" id="create-post">
+      <h2>Create a new post</h2>
+      <form id="postForm">
+        <div class="field">
+          <label for="author">Author</label>
+          <input id="author" name="author" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" name="title" placeholder="Short topic title" required />
+        </div>
+        <div class="field">
+          <label for="content">Content</label>
+          <textarea id="content" name="content" rows="5" placeholder="Write your post here..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Publish post</button>
+        <p id="formMessage" class="message"></p>
+      </form>
+    </section>
+
+    <section class="panel feed-panel">
+      <div class="feed-header">
+        <h2>Recent posts</h2>
+        <span id="postCount" class="pill">0 posts</span>
+      </div>
+      <div id="postsContainer" class="posts"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

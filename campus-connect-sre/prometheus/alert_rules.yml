@@ -1,0 +1,20 @@
+groups:
+  - name: campus-connect-alerts
+    rules:
+      - alert: HighLatencyWarning
+        expr: histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{path="/debug/slow"}[1m])) by (le)) > 2
+        for: 15s
+        labels:
+          severity: warning
+        annotations:
+          summary: "High latency detected on debug endpoint"
+          description: "95th percentile latency on /debug/slow is above 2 seconds for 15 seconds."
+
+      - alert: HighErrorRateCritical
+        expr: sum(rate(http_requests_total{status=~"5.."}[1m])) / sum(rate(http_requests_total[1m])) > 0.2
+        for: 15s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical API error rate"
+          description: "More than 20% of all API requests are failing with 5xx."
